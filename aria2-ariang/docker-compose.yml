@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # The format here is: <app-id>_<docker-service-name>_1
+      APP_HOST: aria2-ariang_server_1
+      APP_PORT: 6800
+      PROXY_AUTH_ADD: 'false'
+    container_name: aria2-ariang_app_proxy_1
+
+  server:
+    image: hurlenko/aria2-ariang:latest
+    user: "1000:1000"
+    init: true
+    restart: on-failure
+    container_name: aria2-ariang_server_1
+    hostname: ${DEVICE_HOSTNAME}
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - RPC_SECRET=umbrel
+      - ARIA2RPCPORT=6800
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/aria2/conf
+      - ${UMBREL_ROOT}/data/storage/downloads:/aria2/data
+    ports:
+      - "6800:6800" # Aria2 RPC interface
