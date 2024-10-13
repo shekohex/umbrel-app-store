@@ -18,6 +18,7 @@ services:
       - PUID=1000
       - PGID=1000
       - RPC_SECRET=umbrel
+      - EMBED_RPC_SECRET=1
       - ARIA2RPCPORT=6800
     volumes:
       - ${APP_DATA_DIR}/data/config:/aria2/conf
