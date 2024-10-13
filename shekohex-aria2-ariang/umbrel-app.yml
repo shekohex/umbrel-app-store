@@ -3,8 +3,8 @@ id: shekohex-aria2-ariang
 name: Aria2 + AriaNg
 tagline: Download files with Aria2 and manage them with AriaNg.
 icon: https://www.svgrepo.com/show/433061/file-download.svg
-category: Media
-version: "1.0.1"
+category: media
+version: "1.0.2"
 port: 6800
 description: >-
   Aria2 is a lightweight multi-protocol & multi-source command-line download utility.
@@ -24,3 +24,5 @@ dependencies: []
 path: ""
 defaultUsername: "umbrel"
 defaultPassword: "umbrel"
+permissions:
+  - STORAGE_DOWNLOADS
