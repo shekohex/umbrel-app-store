@@ -5,7 +5,7 @@ tagline: Download files with Aria2 and manage them with AriaNg.
 icon: https://www.svgrepo.com/show/433061/file-download.svg
 category: media
 version: "1.0.3"
-port: 6800
+port: 16800
 description: >-
   Aria2 is a lightweight multi-protocol & multi-source command-line download utility.
   It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.
