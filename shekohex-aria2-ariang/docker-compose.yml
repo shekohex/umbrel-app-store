@@ -14,6 +14,8 @@ services:
     restart: on-failure
     container_name: shekohex-aria2-ariang_server_1
     hostname: ${DEVICE_HOSTNAME}
+    ports:
+      - 16800:8080
     environment:
       - PUID=1000
       - PGID=1000
