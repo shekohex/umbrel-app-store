@@ -1,0 +1,28 @@
+manifestVersion: 1
+id: shekohex-lionzhd
+name: Lionz IPTV
+tagline: Download Movies, TV Shows from Lionz IPTV
+icon: https://lionz.tv/logo.png
+category: media
+version: "1.0.0"
+port: 8000
+description: >-
+  Download Movies, TV Shows from Lionz IPTV just search and Hit Download
+  it uses aria2 to download files and ariaNg to manage downloads
+developer: shekohex
+website: https://lionz.tv
+submitter: shekohex
+submission: https://github.com/shekohex/umbrel-app-store
+repo: https://github.com/shekohex/umbrel-app-store
+support: https://github.com/shekohex/umbrel-app-store/issues
+gallery:
+  - https://lionz.tv/slider/7.png
+  - https://lionz.tv/slider/12.png
+releaseNotes:
+dependencies:
+  - shekohex-aria2-ariang
+path: ""
+defaultUsername: "umbrel"
+defaultPassword: "umbrel"
+permissions:
+  - STORAGE_DOWNLOADS
