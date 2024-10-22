@@ -22,6 +22,9 @@ services:
       - ARIA2_RPC_PORT=6800
       - DJANGO_SECRET_KEY=${APP_SEED}
       - DJANGO_ALLOWED_HOSTS=*
+      - DJANGO_SUPERUSER_USERNAME=umbrel
+      - DJANGO_SUPERUSER_PASSWORD=umbrel
+      - DJANGO_SUPERUSER_EMAIL=umbrel@localhost
       - DEBUG=False
     volumes:
       - ${APP_DATA_DIR}/data/web:/app/data
