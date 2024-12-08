@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: shekohex-octobot_server_1
+      APP_PORT: 5001
+      PROXY_AUTH_ADD: 'true'
+    container_name: shekohex-octobot_app_proxy_1
+
+  server:
+    image: drakkarsoftware/octobot:stable
+    restart: on-failure
+    container_name: shekohex-ocotobot_server_1
+    hostname: ${DEVICE_HOSTNAME}
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - DEBUG=False
+    volumes:
+      - ${APP_DATA_DIR}/logs:/octobot/logs
+      - ${APP_DATA_DIR}/user:/octobot/user
+      - ${APP_DATA_DIR}/tentacles:/octobot/tentacles
+      - ${APP_DATA_DIR}/backtesting:/octobot/backtesting

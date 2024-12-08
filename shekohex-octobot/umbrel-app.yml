@@ -1,0 +1,34 @@
+manifestVersion: 1
+id: shekohex-octobot
+name: Octobot
+tagline: Crypto investment, now on autopilot
+icon: https://raw.githubusercontent.com/Drakkar-Software/OctoBot/refs/heads/assets/octobot_logo_300x300.png
+category: bitcoin
+version: "2.0.7"
+port: 5001
+description: >-
+  What is Octobot?
+  OctoBot is highly customizable using its configuration and tentacles system.
+  You can build your own bot using the infinite configuration.
+  Octobot's main feature is **evolution**, you can :
+  - Create, backtest and optimize your unique trading strategy from scratch or using the existing strategy bases.
+  - Use Technical indicator (TA), artificial intelligence, ChatGPT predictions, TradingView automations or crypto baskets to automate your strategies.
+  - Trade any crypto on SPOT and Futures markets on more than 15 supported exchanges.
+  - Install, modify and even create new tentacles to build your ideal cryptocurrency trading robot.
+  - Contribute to improve OctoBot core repositories and tentacles.
+
+  OctoBot is AI ready: Python being the main language for OctoBot, it's easy to integrate machine-learning libraries such as [Tensorflow](https://github.com/tensorflow/tensorflow) or any other libraries and take advantage of all the available data and create a very powerful trading strategy.
+
+  Looking for more info ? Check out our Octobot guides at https://octobot.cloud/en/guides/octobot
+
+developer: Drakkar Software
+website: https://www.octobot.cloud/
+submitter: shekohex
+submission: https://github.com/shekohex/umbrel-app-store
+repo: https://github.com/Drakkar-Software/OctoBot
+support: https://github.com/Darkmik/OctoBot/issues
+gallery: []
+releaseNotes:
+  - Initial release on Umbrel App Store
+dependencies:
+path: ""
