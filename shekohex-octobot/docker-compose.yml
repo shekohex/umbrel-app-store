@@ -5,11 +5,11 @@ services:
     environment:
       APP_HOST: shekohex-octobot_server_1
       APP_PORT: 5001
-      PROXY_AUTH_ADD: 'true'
+      PROXY_AUTH_ADD: "true"
     container_name: shekohex-octobot_app_proxy_1
 
-  server:
-    image: drakkarsoftware/octobot:stable
+  server001:
+    image: drakkarsoftware/octobot:2.0.7
     restart: on-failure
     container_name: shekohex-octobot_server_1
     hostname: ${DEVICE_HOSTNAME}
@@ -18,7 +18,41 @@ services:
       - PGID=1000
       - DEBUG=False
     volumes:
-      - ${APP_DATA_DIR}/logs:/octobot/logs
-      - ${APP_DATA_DIR}/user:/octobot/user
-      - ${APP_DATA_DIR}/tentacles:/octobot/tentacles
-      - ${APP_DATA_DIR}/backtesting:/octobot/backtesting
+      - ${APP_DATA_DIR}/001/logs:/octobot/logs
+      - ${APP_DATA_DIR}/001/user:/octobot/user
+      - ${APP_DATA_DIR}/001/tentacles:/octobot/tentacles
+      - ${APP_DATA_DIR}/001/backtesting:/octobot/backtesting
+
+  server002:
+    image: drakkarsoftware/octobot:2.0.7
+    restart: on-failure
+    container_name: shekohex-octobot_server_2
+    hostname: ${DEVICE_HOSTNAME}
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - DEBUG=False
+    ports:
+      - 5002:5001
+    volumes:
+      - ${APP_DATA_DIR}/002/logs:/octobot/logs
+      - ${APP_DATA_DIR}/002/user:/octobot/user
+      - ${APP_DATA_DIR}/002/tentacles:/octobot/tentacles
+      - ${APP_DATA_DIR}/002/backtesting:/octobot/backtesting
+
+  server003:
+      image: drakkarsoftware/octobot:2.0.7
+      restart: on-failure
+      container_name: shekohex-octobot_server_3
+      hostname: ${DEVICE_HOSTNAME}
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - DEBUG=False
+      ports:
+        - 5003:5001
+      volumes:
+        - ${APP_DATA_DIR}/003/logs:/octobot/logs
+        - ${APP_DATA_DIR}/003/user:/octobot/user
+        - ${APP_DATA_DIR}/003/tentacles:/octobot/tentacles
+        - ${APP_DATA_DIR}/003/backtesting:/octobot/backtesting
