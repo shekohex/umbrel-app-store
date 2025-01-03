@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  wakapi_server:
+    image: ghcr.io/muety/wakapi:2.12.3
+    restart: on-failure
+    container_name: shekohex-wakapi_server_1
+    hostname: ${DEVICE_HOSTNAME}
+    stop_grace_period: 10s
+    ports:
+      - 3817:3000
+    environment:
+      - ENVIRONMENT=production
+      - WAKAPI_LEADERBOARD_ENABLED=false
+      - WAKAPI_INACTIVE_DAYS=30
+      - WAKAPI_DATA_RETENTION_MONTHS=-1
+      - WAKAPI_LISTEN_IPV4=0.0.0.0
+      - WAKAPI_MAX_INACTIVE_MONTHS=-1
+      - WAKAPI_PASSWORD_SALT=${APP_PASSWORD}
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${APP_DATA_DIR}/data:/data

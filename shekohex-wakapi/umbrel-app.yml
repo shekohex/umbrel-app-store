@@ -1,0 +1,37 @@
+manifestVersion: 1
+id: shekohex-wakapi
+name: Wakapi
+tagline: Keep Track of your Coding Time
+icon: https://wakapi.dev/assets/images/logo.svg
+category: developer
+version: "2.12.3"
+port: 3817
+description: >-
+  A minimalist, self-hosted WakaTime-compatible backend for coding statistics.
+  Wakapi is an open-source tool that helps you keep track of the time you have spent coding on different projects in different programming languages and more.
+  Ideal for statistics freaks and anyone else.
+
+  Features:
+    * ✅ Free and open-source
+    * ✅ Built by developers for developers
+    * ✅ Statistics for projects, languages, editors, hosts and operating systems
+    * ✅ Badges
+    * ✅ Weekly E-Mail reports
+    * ✅ REST API
+    * ✅ Partially compatible with WakaTime
+    * ✅ WakaTime integration
+    * ✅ Support for Prometheus exports
+    * ✅ Lightning fast
+    * ✅ Self-hosted
+
+developer: Ferdinand Mütsch
+website: https://wakapi.dev/
+submitter: shekohex
+submission: https://github.com/shekohex/umbrel-app-store
+repo: https://github.com/muety/wakapi
+support: https://github.com/muety/wakapi/issues
+gallery: []
+releaseNotes:
+  - Initial release on Umbrel App Store
+dependencies:
+path: ""
