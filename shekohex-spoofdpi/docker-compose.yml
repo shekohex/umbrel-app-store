@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  spoofdpi:
+    image: ne0ark/spoofdpi:v0.12.0@sha256:91f818249566e95259ec094492ae599b91db7456b64823d12b722d06d260dc60
+    restart: on-failure
+    container_name: shekohex-spoofdpi_1
+    hostname: ${DEVICE_HOSTNAME}
+    stop_grace_period: 10s
+    ports:
+      - 8022:8080
+    entrypoint: ["spoofdpi", "-debug", "-addr=0.0.0.0", "-window-size=24", "-pattern=proton", "-enable-doh"]
