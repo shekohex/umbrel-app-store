@@ -9,4 +9,4 @@ services:
     stop_grace_period: 10s
     ports:
       - 8022:8080
-    entrypoint: ["spoofdpi", "-debug", "-addr=0.0.0.0", "-window-size=24", "-pattern=proton", "-enable-doh"]
+    entrypoint: ["spoofdpi", "-debug", "-addr=0.0.0.0", "-window-size=29", "-pattern=proton", "-enable-doh"]
