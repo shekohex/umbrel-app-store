@@ -9,7 +9,7 @@ services:
     container_name: shekohex-octobot_app_proxy_1
 
   server001:
-    image: drakkarsoftware/octobot:2.0.7
+    image: drakkarsoftware/octobot:2.0.8@sha256:4adcc77c475ff37af54f8bdc094f8fd5413dedeb847ff1a9c466e506b9dc42cd
     restart: on-failure
     container_name: shekohex-octobot_server_1
     hostname: ${DEVICE_HOSTNAME}

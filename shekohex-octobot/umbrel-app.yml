@@ -4,7 +4,7 @@ name: Octobot
 tagline: Crypto investment, now on autopilot
 icon: https://raw.githubusercontent.com/Drakkar-Software/OctoBot/refs/heads/assets/octobot_logo_300x300.png
 category: bitcoin
-version: "2.0.7"
+version: "2.0.8"
 port: 5001
 description: >-
   What is Octobot?
@@ -29,6 +29,6 @@ repo: https://github.com/Drakkar-Software/OctoBot
 support: https://github.com/Darkmik/OctoBot/issues
 gallery: []
 releaseNotes:
-  - Initial release on Umbrel App Store
+  - See Changelog at https://github.com/Drakkar-Software/OctoBot/blob/master/CHANGELOG.md#208---2025-01-27
 dependencies:
 path: ""
