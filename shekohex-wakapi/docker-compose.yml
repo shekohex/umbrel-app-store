@@ -17,6 +17,7 @@ services:
       - WAKAPI_LISTEN_IPV4=0.0.0.0
       - WAKAPI_MAX_INACTIVE_MONTHS=-1
       - WAKAPI_PASSWORD_SALT=${APP_PASSWORD}
+      - WAKAPI_ALLOW_SIGNUP=false
       - PUID=1000
       - PGID=1000
     volumes:
