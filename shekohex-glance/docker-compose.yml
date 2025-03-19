@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  glance_server:
+    image: glanceapp/glance:v0.7.7@sha256:8847338427436da1154ff28920f35feba20634ef1b889db4cfa2a1820830e771
+    restart: on-failure
+    container_name: shekohex-glance_server_1
+    hostname: ${DEVICE_HOSTNAME}
+    stop_grace_period: 10s
+    ports:
+      - 8765:8080
+    env_file: .env
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/app/config
+      - ${APP_DATA_DIR}/data/assets:/app/assets

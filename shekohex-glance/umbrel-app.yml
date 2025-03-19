@@ -1,0 +1,45 @@
+manifestVersion: 1
+id: shekohex-glance
+name: Glance
+tagline: A self-hosted dashboard that puts all your feeds in one place
+icon: https://avatars.githubusercontent.com/u/159397742
+category: files
+version: "0.7.7"
+port: 8765
+description: >-
+  What if you could see everything at a... glance? Glance is a self-hosted dashboard that puts all your feeds in one place.
+
+  Features:
+    * RSS feeds
+    * Subreddit posts
+    * Hacker News posts
+    * Weather forecasts
+    * YouTube channel uploads
+    * Twitch channels
+    * Market prices
+    * Docker containers status
+    * Server stats
+    * Custom widgets
+  Fast and lightweight
+    * Low memory usage
+    * Few dependencies
+    * Minimal vanilla JS
+    * Single <20mb binary available for multiple OSs & architectures and just as small Docker container
+    * Uncached pages usually load within ~1s (depending on internet speed and number of widgets)
+  Tons of customizability
+    * Different layouts
+    * As many pages/tabs as you need
+    * Numerous configuration options for each widget
+    * Multiple styles for some widgets
+    * Custom CSS
+developer: Svilen Markov
+website: https://github.com/glanceapp/glance
+submitter: shekohex
+submission: https://github.com/shekohex/umbrel-app-store
+repo: https://github.com/glanceapp/glance
+support: https://github.com/glanceapp/glance/issues
+gallery: []
+releaseNotes:
+  - Initial release on Umbrel App Store
+dependencies:
+path: ""
