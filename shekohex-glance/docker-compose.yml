@@ -9,7 +9,6 @@ services:
     stop_grace_period: 10s
     ports:
       - 8765:8080
-    env_file: .env
     volumes:
       - ${APP_DATA_DIR}/data/config:/app/config
       - ${APP_DATA_DIR}/data/assets:/app/assets
