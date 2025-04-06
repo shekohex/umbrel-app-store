@@ -1,33 +1,121 @@
 version: "3.7"
 
 services:
-  app_proxy:
-    environment:
-      APP_HOST: shekohex-lionzhd_server_1
-      APP_PORT: 8000
-      PROXY_AUTH_ADD: 'true'
-    container_name: shekohex-lionzhd_app_proxy_1
-
-  server:
-    image: lionzhd:latest
+  application:
+    image: ghcr.io/shekohex/lionzhd-app:nightly
     restart: on-failure
-    container_name: shekohex-lionzhd_server_1
+    container_name: shekohex-lionzhd_application_1
     hostname: ${DEVICE_HOSTNAME}
     environment:
-      - PUID=1000
-      - PGID=1000
-      - MEILI_HTTP_URL=http://meilisearch:7700
-      - MEILI_MASTER_KEY=${APP_PASSWORD}
-      - ARIA2_RPC_HOST=http://shekohex-aria2-ariang_server_1
-      - ARIA2_RPC_PORT=6800
-      - DJANGO_SECRET_KEY=${APP_SEED}
-      - DJANGO_ALLOWED_HOSTS=*
-      - DJANGO_SUPERUSER_USERNAME=umbrel
-      - DJANGO_SUPERUSER_PASSWORD=umbrel
-      - DJANGO_SUPERUSER_EMAIL=umbrel@localhost
-      - DEBUG=False
+      APP_NAME: Lionz
+      APP_ENV: production
+      APP_KEY: "${APP_KEY:-unset}"
+      APP_DEBUG: false
+      APP_URL: "http://${APP_DOMAIN}"
+      LOG_CHANNEL: stack
+      LOG_STACK: single
+      LOG_LEVEL: debug
+      DB_CONNECTION: sqlite
+      DB_DATABASE: /data/database/database.sqlite
+      SESSION_DRIVER: database
+      SESSION_LIFETIME: 120
+      BROADCAST_CONNECTION: log
+      QUEUE_CONNECTION: database
+      CACHE_STORE: database
+      SCOUT_DRIVER: meilisearch
+      SCOUT_QUEUE: true
+      MEILISEARCH_HOST: http://meilisearch:7700
+      MEILISEARCH_KEY: ${APP_PASSWORD}
+      ARIA2_RPC_HOST: http://shekohex-aria2-ariang_server_1
+      ARIA2_RPC_PORT: 6800
+      ARIA2_RPC_SECRET: umbrel
+      HTTP_CLIENT_USER_AGENT: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0"
+      XTREAM_CODES_API_HOST: http://lionzhd.com
+      XTREAM_CODES_API_PORT: 8080
+      XTREAM_CODES_API_USER: username
+      XTREAM_CODES_API_PASS: password
+      TELESCOPE_ENABLED: true
+    ports:
+      - 8000:80
     volumes:
-      - ${APP_DATA_DIR}/data/web:/app/data
+      - ${APP_DATA_DIR}/data/database:/data/database
+    depends_on:
+      - queue
+      - scheduler
+
+  queue:
+    image: ghcr.io/shekohex/lionzhd-queue:nightly
+    restart: on-failure
+    container_name: shekohex-lionzhd_queue_1
+    hostname: ${DEVICE_HOSTNAME}
+    environment:
+      APP_NAME: Lionz
+      APP_ENV: production
+      APP_KEY: "${APP_KEY:-unset}"
+      APP_DEBUG: false
+      APP_URL: "http://${APP_DOMAIN}"
+      LOG_CHANNEL: stack
+      LOG_STACK: single
+      LOG_LEVEL: debug
+      DB_CONNECTION: sqlite
+      DB_DATABASE: /data/database/database.sqlite
+      SESSION_DRIVER: database
+      SESSION_LIFETIME: 120
+      BROADCAST_CONNECTION: log
+      QUEUE_CONNECTION: database
+      CACHE_STORE: database
+      SCOUT_DRIVER: meilisearch
+      SCOUT_QUEUE: true
+      MEILISEARCH_HOST: http://meilisearch:7700
+      MEILISEARCH_KEY: ${APP_PASSWORD}
+      ARIA2_RPC_HOST: http://shekohex-aria2-ariang_server_1
+      ARIA2_RPC_PORT: 6800
+      ARIA2_RPC_SECRET: umbrel
+      HTTP_CLIENT_USER_AGENT: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0"
+      XTREAM_CODES_API_HOST: http://lionzhd.com
+      XTREAM_CODES_API_PORT: 8080
+      XTREAM_CODES_API_USER: username
+      XTREAM_CODES_API_PASS: password
+      TELESCOPE_ENABLED: true
+    volumes:
+      - ${APP_DATA_DIR}/data/database:/data/database
+ 
+  scheduler:
+    image: ghcr.io/shekohex/lionzhd-scheduler:nightly
+    restart: on-failure
+    container_name: shekohex-lionzhd_scheduler_1
+    hostname: ${DEVICE_HOSTNAME}
+    environment:
+      APP_NAME: Lionz
+      APP_ENV: production
+      APP_KEY: "${APP_KEY:-unset}"
+      APP_DEBUG: false
+      APP_URL: "http://${APP_DOMAIN}"
+      LOG_CHANNEL: stack
+      LOG_STACK: single
+      LOG_LEVEL: debug
+      DB_CONNECTION: sqlite
+      DB_DATABASE: /data/database/database.sqlite
+      SESSION_DRIVER: database
+      SESSION_LIFETIME: 120
+      BROADCAST_CONNECTION: log
+      QUEUE_CONNECTION: database
+      CACHE_STORE: database
+      SCOUT_DRIVER: meilisearch
+      SCOUT_QUEUE: true
+      MEILISEARCH_HOST: http://meilisearch:7700
+      MEILISEARCH_KEY: ${APP_PASSWORD}
+      ARIA2_RPC_HOST: http://shekohex-aria2-ariang_server_1
+      ARIA2_RPC_PORT: 6800
+      ARIA2_RPC_SECRET: umbrel
+      HTTP_CLIENT_USER_AGENT: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0"
+      XTREAM_CODES_API_HOST: http://lionzhd.com
+      XTREAM_CODES_API_PORT: 8080
+      XTREAM_CODES_API_USER: username
+      XTREAM_CODES_API_PASS: password
+      TELESCOPE_ENABLED: true
+    volumes:
+      - ${APP_DATA_DIR}/data/database:/data/database
 
   meilisearch:
     image: getmeili/meilisearch:v1
