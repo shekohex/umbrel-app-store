@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   wakapi_server:
-    image: ghcr.io/muety/wakapi:2.12.3
+    image: ghcr.io/muety/wakapi:2.13.2
     restart: on-failure
     container_name: shekohex-wakapi_server_1
     hostname: ${DEVICE_HOSTNAME}

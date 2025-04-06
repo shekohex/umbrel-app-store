@@ -4,7 +4,7 @@ name: Wakapi
 tagline: Keep Track of your Coding Time
 icon: https://wakapi.dev/assets/images/logo.svg
 category: developer
-version: "2.12.3"
+version: "2.13.2"
 port: 3817
 description: >-
   A minimalist, self-hosted WakaTime-compatible backend for coding statistics.
