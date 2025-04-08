@@ -17,13 +17,13 @@ services:
       LOG_LEVEL: debug
       DB_CONNECTION: sqlite
       DB_DATABASE: /data/database/database.sqlite
-      SESSION_DRIVER: redis
-      SESSION_STORE: redis
+      SESSION_DRIVER: database
       SESSION_LIFETIME: 120
       BROADCAST_CONNECTION: log
       QUEUE_CONNECTION: redis
       CACHE_STORE: redis
       REDIS_CLIENT: phpredis
+      REDIS_URL: tcp://redis
       REDIS_HOST: redis
       REDIS_PASSWORD: null
       REDIS_PORT: 6379
@@ -67,13 +67,13 @@ services:
       LOG_LEVEL: debug
       DB_CONNECTION: sqlite
       DB_DATABASE: /data/database/database.sqlite
-      SESSION_DRIVER: redis
-      SESSION_STORE: redis
+      SESSION_DRIVER: database
       SESSION_LIFETIME: 120
       BROADCAST_CONNECTION: log
       QUEUE_CONNECTION: redis
       CACHE_STORE: redis
       REDIS_CLIENT: phpredis
+      REDIS_URL: tcp://redis
       REDIS_HOST: redis
       REDIS_PASSWORD: null
       REDIS_PORT: 6379
@@ -113,13 +113,13 @@ services:
       LOG_LEVEL: debug
       DB_CONNECTION: sqlite
       DB_DATABASE: /data/database/database.sqlite
-      SESSION_DRIVER: redis
-      SESSION_STORE: redis
+      SESSION_DRIVER: database
       SESSION_LIFETIME: 120
       BROADCAST_CONNECTION: log
       QUEUE_CONNECTION: redis
       CACHE_STORE: redis
       REDIS_CLIENT: phpredis
+      REDIS_URL: tcp://redis
       REDIS_HOST: redis
       REDIS_PASSWORD: null
       REDIS_PORT: 6379
@@ -163,6 +163,10 @@ services:
     restart: on-failure
     container_name: shekohex-lionzhd_redis_1
     hostname: ${DEVICE_HOSTNAME}
-    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     volumes:
       - ${APP_DATA_DIR}/data/redis:/data
