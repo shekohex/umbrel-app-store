@@ -4,7 +4,7 @@ name: Lionz
 tagline: Download Movies, TV Shows from Lionz IPTV
 icon: https://lionz.tv/logo.png
 category: media
-version: "1.0.17"
+version: "1.0.18"
 port: 8000
 description: >-
   Download Movies, TV Shows from Lionz IPTV just search and Hit Download.

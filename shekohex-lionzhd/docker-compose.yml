@@ -18,6 +18,7 @@ services:
       DB_CONNECTION: sqlite
       DB_DATABASE: /data/database/database.sqlite
       SESSION_DRIVER: redis
+      SESSION_STORE: redis
       SESSION_LIFETIME: 120
       BROADCAST_CONNECTION: log
       QUEUE_CONNECTION: redis
@@ -67,6 +68,7 @@ services:
       DB_CONNECTION: sqlite
       DB_DATABASE: /data/database/database.sqlite
       SESSION_DRIVER: redis
+      SESSION_STORE: redis
       SESSION_LIFETIME: 120
       BROADCAST_CONNECTION: log
       QUEUE_CONNECTION: redis
@@ -112,6 +114,7 @@ services:
       DB_CONNECTION: sqlite
       DB_DATABASE: /data/database/database.sqlite
       SESSION_DRIVER: redis
+      SESSION_STORE: redis
       SESSION_LIFETIME: 120
       BROADCAST_CONNECTION: log
       QUEUE_CONNECTION: redis
@@ -160,6 +163,6 @@ services:
     restart: on-failure
     container_name: shekohex-lionzhd_redis_1
     hostname: ${DEVICE_HOSTNAME}
-    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    command: redis-server --appendonly yes
     volumes:
       - ${APP_DATA_DIR}/data/redis:/data
