@@ -17,11 +17,15 @@ services:
       LOG_LEVEL: debug
       DB_CONNECTION: sqlite
       DB_DATABASE: /data/database/database.sqlite
-      SESSION_DRIVER: database
+      SESSION_DRIVER: redis
       SESSION_LIFETIME: 120
       BROADCAST_CONNECTION: log
-      QUEUE_CONNECTION: database
-      CACHE_STORE: database
+      QUEUE_CONNECTION: redis
+      CACHE_STORE: redis
+      REDIS_CLIENT: phpredis
+      REDIS_HOST: redis
+      REDIS_PASSWORD: null
+      REDIS_PORT: 6379
       SCOUT_DRIVER: meilisearch
       SCOUT_QUEUE: true
       MEILISEARCH_HOST: http://meilisearch:7700
@@ -44,6 +48,7 @@ services:
     depends_on:
       - queue
       - scheduler
+      - redis
 
   queue:
     image: ghcr.io/shekohex/lionzhd-queue:nightly
@@ -61,11 +66,15 @@ services:
       LOG_LEVEL: debug
       DB_CONNECTION: sqlite
       DB_DATABASE: /data/database/database.sqlite
-      SESSION_DRIVER: database
+      SESSION_DRIVER: redis
       SESSION_LIFETIME: 120
       BROADCAST_CONNECTION: log
-      QUEUE_CONNECTION: database
-      CACHE_STORE: database
+      QUEUE_CONNECTION: redis
+      CACHE_STORE: redis
+      REDIS_CLIENT: phpredis
+      REDIS_HOST: redis
+      REDIS_PASSWORD: null
+      REDIS_PORT: 6379
       SCOUT_DRIVER: meilisearch
       SCOUT_QUEUE: true
       MEILISEARCH_HOST: http://meilisearch:7700
@@ -83,6 +92,8 @@ services:
       SENTRY_TRACES_SAMPLE_RATE: 1.0
     volumes:
       - ${APP_DATA_DIR}/data/database:/data/database
+    depends_on:
+      - redis
  
   scheduler:
     image: ghcr.io/shekohex/lionzhd-scheduler:nightly
@@ -100,11 +111,15 @@ services:
       LOG_LEVEL: debug
       DB_CONNECTION: sqlite
       DB_DATABASE: /data/database/database.sqlite
-      SESSION_DRIVER: database
+      SESSION_DRIVER: redis
       SESSION_LIFETIME: 120
       BROADCAST_CONNECTION: log
-      QUEUE_CONNECTION: database
-      CACHE_STORE: database
+      QUEUE_CONNECTION: redis
+      CACHE_STORE: redis
+      REDIS_CLIENT: phpredis
+      REDIS_HOST: redis
+      REDIS_PASSWORD: null
+      REDIS_PORT: 6379
       SCOUT_DRIVER: meilisearch
       SCOUT_QUEUE: true
       MEILISEARCH_HOST: http://meilisearch:7700
@@ -122,14 +137,14 @@ services:
       SENTRY_TRACES_SAMPLE_RATE: 1.0
     volumes:
       - ${APP_DATA_DIR}/data/database:/data/database
+    depends_on:
+      - redis
 
   meilisearch:
     image: getmeili/meilisearch:v1
     restart: on-failure
     container_name: shekohex-lionzhd_meilisearch_1
     hostname: ${DEVICE_HOSTNAME}
-    ports:
-      - 7700:7700
     environment:
       - PUID=1000
       - PGID=1000
@@ -139,3 +154,12 @@ services:
       - MEILI_MASTER_KEY=${APP_PASSWORD}
     volumes:
       - ${APP_DATA_DIR}/data/meilisearch:/meili_data
+
+  redis:
+    image: redis:alpine
+    restart: on-failure
+    container_name: shekohex-lionzhd_redis_1
+    hostname: ${DEVICE_HOSTNAME}
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    volumes:
+      - ${APP_DATA_DIR}/data/redis:/data
