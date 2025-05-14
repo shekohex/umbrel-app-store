@@ -4,7 +4,7 @@ name: Octobot
 tagline: Crypto investment, now on autopilot
 icon: https://raw.githubusercontent.com/Drakkar-Software/OctoBot/refs/heads/assets/octobot_logo_300x300.png
 category: bitcoin
-version: "2.0.8"
+version: "2.0.9"
 port: 5001
 description: >-
   What is Octobot?
