@@ -4,7 +4,7 @@ name: Glance
 tagline: A self-hosted dashboard that puts all your feeds in one place
 icon: https://avatars.githubusercontent.com/u/159397742
 category: files
-version: "0.7.7"
+version: "0.8.1"
 port: 8765
 description: >-
   What if you could see everything at a... glance? Glance is a self-hosted dashboard that puts all your feeds in one place.
