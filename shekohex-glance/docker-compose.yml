@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   glance_server:
-    image: glanceapp/glance:v0.7.7@sha256:8847338427436da1154ff28920f35feba20634ef1b889db4cfa2a1820830e771
+    image: glanceapp/glance:v0.8.1@sha256:8993ed3e1e6830a0b84a3ca053572beaae394f2d93f1918bb931d1fc204dbbab
     restart: on-failure
     container_name: shekohex-glance_server_1
     hostname: ${DEVICE_HOSTNAME}
